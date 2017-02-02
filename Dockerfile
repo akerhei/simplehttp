@@ -13,7 +13,7 @@ ADD webapp/ /webapp/
 RUN groupadd -r webapp \
   && useradd -r -g webapp webapp
 RUN chown -R webapp:webapp /webapp
-RUN chmod -R +wrx /webapp
+RUN chmod -R 777 /webapp
 
 
 USER webapp
