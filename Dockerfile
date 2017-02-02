@@ -7,8 +7,14 @@ RUN apt-get update && apt-get install -y \
     rm -rf /var/lib/apt/lists/*
 
 EXPOSE 3000
-
 ADD webapp/ /webapp/
+
+RUN groupadd -r webapp \
+  && useradd -r -g webapp webapp
+RUN chown -R webapp:webapp /webapp
+
+
+USER webapp
 WORKDIR /webapp/
 CMD ["python", "httpserver.py"]
 
