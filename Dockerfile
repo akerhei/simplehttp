@@ -8,13 +8,14 @@ RUN apt-get update && apt-get install -y \
 
 EXPOSE 3000
 
+VOLUME /webapp
+ADD webapp/ /webapp/
+
 RUN groupadd -r webapp \
   && useradd -r -g webapp webapp
-
-VOLUME /webapp
-
-ADD webapp/ /webapp/
 RUN chown -R webapp:webapp /webapp
+RUN chmod +wrx /webapp
+
 
 USER webapp
 WORKDIR /webapp/
