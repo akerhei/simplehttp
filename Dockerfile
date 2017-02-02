@@ -13,11 +13,9 @@ RUN groupadd -r webapp \
 
 VOLUME /webapp
 
-ADD webapp/* /webapp/
-
-RUN chown -R webapp:webapp /webapp 
+ADD webapp/ /webapp/
+RUN chown -R webapp:webapp /webapp
 
 USER webapp
 WORKDIR /webapp/
 CMD ["python", "httpserver.py"]
-
